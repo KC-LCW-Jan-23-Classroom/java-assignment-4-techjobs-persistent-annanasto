@@ -4,7 +4,6 @@ import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +43,7 @@ public class SkillController {
     }
 
     @GetMapping("view/{skillId}")
-    public String displayNewSkill(Model model, @PathVariable int skillId) {
+    public String displayViewSkill(Model model, @PathVariable int skillId) {
 
         Optional<Skill> optSkill = skillRepository.findById(skillId);
 
@@ -53,6 +52,7 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
+
             return "redirect:../";
         }
     }
